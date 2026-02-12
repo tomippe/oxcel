@@ -1,0 +1,522 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  padding: 12px;
+  text-align: center;
+}
+
+.app-logo {
+  height: 28px;
+  width: auto;
+}
+
+.app-footer {
+  padding: 12px;
+  text-align: center;
+}
+
+.tomippe-logo {
+  height: 20px;
+  width: auto;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.tomippe-logo:hover {
+  opacity: 1;
+}
+
+.app-main {
+  flex: 1;
+  padding: 8px;
+  overflow: auto;
+}
+
+/* Grid Container */
+.grid-container {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 10px;
+  position: relative;
+}
+
+/* AC (All Clear) Button */
+.ac-button {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 4px;
+  background: #ffffff;
+  color: rgb(255, 46, 46);
+  font-family: inherit;
+  font-size: 22px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  z-index: 100;
+}
+
+.ac-button:hover {
+  background: #ef5350;
+  color: white;
+}
+
+.ac-button:active {
+  transform: scale(0.95);
+}
+
+.grid-wrapper {
+  position: relative;
+}
+
+.grid {
+  position: relative;
+}
+
+/* Insert buttons */
+.insert-button {
+  width: 18px;
+  height: 18px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #666;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s, background 0.2s, color 0.2s;
+  transform: translate(-50%, -50%);
+}
+
+.grid-wrapper:hover .insert-button {
+  opacity: 0.8;
+}
+
+.insert-button:hover {
+  opacity: 1 !important;
+  background: #4dd0e1;
+  color: white;
+}
+
+/* Delete buttons */
+.delete-button {
+  width: 18px;
+  height: 18px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #666;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s, background 0.2s, color 0.2s;
+  transform: translate(-50%, -50%);
+}
+
+.grid-wrapper:hover .delete-button {
+  opacity: 0.8;
+}
+
+.delete-button:hover {
+  opacity: 1 !important;
+  background: #e57373;
+  color: white;
+}
+
+/* Octagon Container */
+.octagon-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Octagon Wrapper */
+.octagon-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  clip-path: polygon(
+    25% 0%,
+    75% 0%,
+    100% 25%,
+    100% 75%,
+    75% 100%,
+    25% 100%,
+    0% 75%,
+    0% 25%
+  );
+}
+
+/* Shift buttons */
+.shift-button {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: none;
+  border-radius: 50%;
+  background: #aaa;
+  color: white;
+  font-size: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+  transition: opacity 0.2s, background 0.2s;
+}
+
+.shift-button:hover {
+  opacity: 1;
+  background: #888;
+}
+
+.shift-button-right {
+  right: -24px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.shift-button-down {
+  bottom: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Chain break separators */
+.chain-separator {
+  position: absolute;
+  z-index: 5;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.chain-separator:hover {
+  opacity: 0.6;
+}
+
+.chain-separator-left {
+  left: -22px;
+  top: 10%;
+  width: 3px;
+  height: 80%;
+  background: linear-gradient(to bottom, transparent 0%, #999 30%, #999 70%, transparent 100%);
+  border-radius: 2px;
+}
+
+.chain-separator-top {
+  top: -22px;
+  left: 10%;
+  height: 3px;
+  width: 80%;
+  background: linear-gradient(to right, transparent 0%, #999 30%, #999 70%, transparent 100%);
+  border-radius: 2px;
+}
+
+.octagon-svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.octagon-shape {
+  transition: fill 0.2s;
+  cursor: pointer;
+}
+
+.octagon-shape:hover {
+  fill: #ddd;
+}
+
+/* Operator Badge - diagonal from corner 2 (75%,0) to corner 7 (0,75%) */
+.operator-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 75%;
+  height: 75%;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  cursor: pointer;
+  z-index: 10;
+  transition: filter 0.15s;
+}
+
+.operator-badge:hover {
+  filter: brightness(1.1);
+}
+
+.operator-symbol {
+  margin-top: 14%;
+  margin-left: 20%;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  user-select: none;
+}
+
+/* Flow Direction Badge - diagonal from corner 4 (100%,75%) to corner 1 (25%,0%) - opposite of operator */
+.flow-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 75%;
+  height: 75%;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  cursor: pointer;
+  z-index: 10;
+  transition: filter 0.15s, opacity 0.15s;
+}
+
+.flow-badge:hover {
+  filter: brightness(1.1);
+}
+
+.flow-badge-cross {
+  opacity: 0.3;
+}
+
+.flow-badge-cross:hover,
+.flow-badge-visible {
+  opacity: 1;
+}
+
+.flow-icon {
+  width: 15px;
+  height: 15px;
+  margin-bottom: 16%;
+  margin-right: 22%;
+  user-select: none;
+}
+
+/* Octagon Content - positioned outside wrapper for overflow */
+.octagon-content {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  overflow: visible;
+}
+
+.octagon-value {
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--text-color);
+  white-space: nowrap;
+}
+
+/* Decimal part styling - 80% size */
+.decimal-part {
+  font-size: 0.8em;
+}
+
+/* Rounded value indicator - slightly skewed like italic */
+.rounded {
+  transform: skewX(-6deg);
+}
+
+/* Overflow error display */
+.overflow-error {
+  color: #e53935;
+  font-weight: bold;
+}
+
+.octagon-input {
+  width: auto;
+  font-family: inherit;
+  font-size: 26px;
+  font-weight: 400;
+  text-align: center;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: var(--text-color);
+}
+
+.octagon-input:focus {
+  outline: none;
+}
+
+/* Result Square */
+.result-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.result-square {
+  width: 100%;
+  height: 100%;
+  background-color: var(--result-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.result-value {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-color);
+  white-space: nowrap;
+}
+
+.result-input {
+  width: auto;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: var(--text-color);
+}
+
+.result-input:focus {
+  outline: none;
+}
+
+/* Blocked flow indicator - thick border outside the result square */
+.result-blocked::after {
+  content: '';
+  position: absolute;
+  z-index: 5;
+}
+
+.result-blocked-bottom::after {
+  bottom: -5px;
+  left: -16px;
+  right: -16px;
+  height: 3px;
+  background: linear-gradient(to right, transparent 0%, #666 15%, #666 85%, transparent 100%);
+}
+
+.result-blocked-right::after {
+  right: -5px;
+  top: -16px;
+  bottom: -16px;
+  width: 3px;
+  background: linear-gradient(to bottom, transparent 0%, #666 15%, #666 85%, transparent 100%);
+}
+
+/* Accumulation operator badges */
+.result-accum-op {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+  transition: filter 0.15s;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+.result-accum-op:hover {
+  filter: brightness(1.2);
+}
+
+/* Top badge for vertical accumulation (right results) */
+.result-accum-op-top {
+  width: 100%;
+  height: 14px;
+  top: -14px;
+  left: 0;
+  border-radius: 4px 4px 0 0;
+}
+
+/* Left badge for horizontal accumulation (bottom results) */
+.result-accum-op-left {
+  width: 14px;
+  height: 100%;
+  left: -14px;
+  top: 0;
+  border-radius: 4px 0 0 4px;
+}
+
+/* Accumulated values - small text without border */
+.result-accum {
+  position: absolute;
+  font-size: 9px;
+  font-weight: 400;
+  color: #666;
+  white-space: nowrap;
+}
+
+.result-accum-bottom {
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.result-accum-right {
+  right: -6px;
+  top: 50%;
+  transform: translateX(100%) translateY(-50%);
+}
+
+/* Mobile styles */
+@media (max-width: 600px) {
+  .app-header {
+    padding: 8px;
+  }
+
+  .app-logo {
+    height: 22px;
+  }
+
+  .app-main {
+    padding: 8px;
+  }
+
+  .grid-container {
+    padding: 8px;
+  }
+
+  .ac-button {
+    top: 8px;
+    left: 8px;
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .app-footer {
+    padding: 8px;
+  }
+
+  .tomippe-logo {
+    height: 16px;
+  }
+}

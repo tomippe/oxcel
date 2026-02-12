@@ -1,0 +1,32 @@
+:root {
+  --bg-color: #d0d0d0;
+  --octagon-color: #e8e8e8;
+  --result-color: #ffffff;
+  --text-color: #333333;
+  --operator-plus: #4dd0e1aa;
+  --operator-minus: #e57373aa;
+  --operator-multiply: #7e57c2aa;
+  --operator-divide: #8e4585aa;
+  --operator-power: #ff9800aa;
+  --operator-modulo: #4caf50aa;
+  --operator-round: #795548aa;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Tomorrow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
