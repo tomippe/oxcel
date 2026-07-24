@@ -41,9 +41,9 @@ dev_server_stop $DEV_PORT
 
 # クリーンアップ
 echo "🧹 ビルドフォルダをクリーンアップしています..."
-if [ -d "dist" ]; then
-    rm -rf dist
-    echo "  ✓ distディレクトリを削除しました"
+if [ -d "build" ]; then
+    rm -rf build
+    echo "  ✓ buildディレクトリを削除しました"
 fi
 
 if [ -d "$DEPLOY_DIR" ]; then
@@ -60,7 +60,7 @@ npm run build
 
 # ビルド結果をコピー
 echo "📂 ビルド結果をコピーしています..."
-cp -R dist/* "$DEPLOY_DIR/"
+cp -R build/* "$DEPLOY_DIR/"
 
 echo "✅ ビルドが完了しました！"
 
